@@ -5,9 +5,9 @@ interface BlackKeyProps {
 
 function BlackKey(props: BlackKeyProps) {
   return (
-    <div className="w-0 z-10 flex justify-center">
-      <div className="w-12 h-42 outline-4 outline-black flex justify-center text-lg bg-black rounded-lg mx-0.5">
-        <div className="self-end text-white">
+    <div className="w-0 z-10 flex justify-center overflow-visible">
+      <div className="shrink-0 w-10 h-42 outline-4 outline-black flex justify-center text-lg bg-black rounded-lg mx-0.5">
+        <div className="self-end text-white text-center cursor-default">
           {props.note}
         </div>
       </div>
