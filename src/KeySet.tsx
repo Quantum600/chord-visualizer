@@ -26,9 +26,9 @@ function KeySet() {
     <>
       {Keys.map(Key => {
         if(Key.note.includes("#")) {
-          return(<BlackKey note={Key.note} semis={Key.semis} />)
+          return(<BlackKey key={Key.note} note={Key.note} semis={Key.semis} />)
         } else {
-          return(<WhiteKey note={Key.note} semis={Key.semis} />)
+          return(<WhiteKey key={Key.note} note={Key.note} semis={Key.semis} />)
         }
       })}
     </>
