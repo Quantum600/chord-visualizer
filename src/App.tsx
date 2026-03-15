@@ -1,18 +1,12 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import KeySet from "./KeySet"
 
 function App() {
   return (
-    <>
-      <div className="w-full">
-        <a href="https://vite.dev" target="_blank" className="flex justify-center">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" className="flex justify-center">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="justify-center items-center flex w-full h-dvh bg-gray-600">
+      <div className="w-1/2 h-1/2 flex justify-center items-start">
+        <KeySet />
       </div>
-    </>
+    </div>
   )
 }
 
