@@ -1,12 +1,20 @@
+import * as Tone from "tone";
+
 interface WhiteKeyProps {
   note: string
   semis: number
 }
 
 function WhiteKey(props: WhiteKeyProps) {
+  const synth = new Tone.Synth().toDestination(); 
 
   const OnKeyPressed = () => {
     console.log(props.note + " pressed!")
+
+    const now = Tone.now();
+
+    synth.triggerAttack(props.note, now);
+    synth.triggerRelease(now+0.2);
   }
 
   return (
