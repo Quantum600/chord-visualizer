@@ -1,6 +1,9 @@
 import WhiteKey from "./WhiteKey"
 import BlackKey from "./BlackKey";
 
+import React, {useContext} from 'react';
+import { ChordNotesContext } from "./ChordNotesContext";
+
 interface Key {
   note: string;
   semis: number;
@@ -8,11 +11,6 @@ interface Key {
 
 // List of 3 octaves of keys
 const Keys: Key[] = [
-  {note: "C3", semis: 24},
-  {note: "Db3 C#3", semis: 25},
-  {note: "D3", semis: 26},
-  {note: "Eb3 D#3", semis: 27},
-  {note: "E3", semis: 28},
   {note: "F3", semis: 29},
   {note: "Gb3 F#3", semis: 30},
   {note: "G3", semis: 31},
@@ -44,19 +42,33 @@ const Keys: Key[] = [
   {note: "A5", semis: 57},
   {note: "Bb5 A#5", semis: 58},
   {note: "B5", semis: 59},
+  {note: "C6", semis: 60},
+  {note: "Db6 C#6", semis: 61},
+  {note: "D6", semis: 62},
+  {note: "Eb6 D#6", semis: 63},
+  {note: "E6", semis: 64},
+  {note: "F6", semis: 65},
 ]
 
 function KeySet() {
+  const [chordNotes, setChordNotes] = useContext(ChordNotesContext)
+
+  const pianoKeys = Keys.map(Key => {
+    // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
+    if(Key.note.includes("#")) {
+      return(<BlackKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} />)
+    } else {
+      return(<WhiteKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} />)
+    }
+  })
+
+  console.log(pianoKeys.find((element) => {
+    return element.key == "57"
+  }))
+
   return (
     <>
-      {Keys.map(Key => {
-        // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
-        if(Key.note.includes("#")) {
-          return(<BlackKey key={Key.note} note={Key.note} semis={Key.semis} />)
-        } else {
-          return(<WhiteKey key={Key.note} note={Key.note} semis={Key.semis} />)
-        }
-      })}
+      {pianoKeys}
     </>
   )
 }
