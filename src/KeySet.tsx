@@ -51,8 +51,6 @@ const Keys: Key[] = [
 ]
 
 function KeySet() {
-  const [chord] = useContext(ChordContext)
-
   const pianoKeys = Keys.map(Key => {
     // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
     if(Key.note.includes("#")) {
@@ -61,6 +59,12 @@ function KeySet() {
       return(<WhiteKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} />)
     }
   })
+
+  const [chord] = useContext(ChordContext)
+  const chordNotes: number[] = [];
+  if(chord.root == "C" && chord.quality == "M") {
+    chordNotes.push(36, 36+4, 36+3);
+  }
 
   console.log(pianoKeys.find((element) => {
     return element.key == "57"

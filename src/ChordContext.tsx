@@ -1,12 +1,13 @@
 import { createContext } from "react"
 import type { Dispatch, SetStateAction } from "react"
+import type { ChordType } from "./App"
 
-export type ChordContexttype = [
-  string[],
-  Dispatch<SetStateAction<string[]>>
+export type ChordContextType = [
+  ChordType,
+  Dispatch<SetStateAction<ChordType>>
 ]
 
-export const ChordContext = createContext<ChordContexttype>([
-  [],
+export const ChordContext = createContext<ChordContextType>([
+  {root: "C", quality: "M"},
   () => {},
 ])

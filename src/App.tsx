@@ -5,8 +5,13 @@ import { ChordContext } from "./ChordContext"
 // Component imports
 import KeySet from "./KeySet"
 
+export type ChordType = {
+  root:string,
+  quality:string
+}
+
 function App() {
-  const [chord, setChord] = useState(["C", "E", "G"])
+  const [chord, setChord] = useState({root: "C", quality: "M"})
 
   return (
     <ChordContext.Provider value={[chord, setChord]}>
