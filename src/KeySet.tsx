@@ -1,8 +1,8 @@
 import WhiteKey from "./WhiteKey"
 import BlackKey from "./BlackKey";
 
-import React, {useContext} from 'react';
-import { ChordNotesContext } from "./ChordNotesContext";
+import {useContext} from 'react';
+import { ChordContext } from "./ChordContext";
 
 interface Key {
   note: string;
@@ -51,7 +51,7 @@ const Keys: Key[] = [
 ]
 
 function KeySet() {
-  const [chordNotes, setChordNotes] = useContext(ChordNotesContext)
+  const [chord] = useContext(ChordContext)
 
   const pianoKeys = Keys.map(Key => {
     // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
