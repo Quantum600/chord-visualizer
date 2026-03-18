@@ -1,9 +1,13 @@
 // React imports
 import { useState } from "react"
+
+// Context imports
 import { ChordContext } from "./ChordContext"
+import { PlayChordContext } from "./ChordContext"
 
 // Component imports
 import KeySet from "./KeySet"
+import PlayButton from "./PlayButton"
 
 export type ChordType = {
   root:string,
@@ -12,16 +16,19 @@ export type ChordType = {
 
 function App() {
   const [chord, setChord] = useState({root: "C", quality: "M"})
+  const [playChord, setPlayChord] = useState(false)
 
   return (
-    <ChordContext.Provider value={[chord, setChord]}>
-      <div className="justify-center items-center flex w-full h-dvh bg-gray-600 font-mono">
-        <div className="w-11/12 h-1/2 flex justify-center items-start flex-wrap">
-          <KeySet />
-          <div className="text-5xl bold w-full text-center select-none">Piano</div>
+    <PlayChordContext.Provider value={[playChord, setPlayChord]}>
+      <ChordContext.Provider value={[chord, setChord]}>
+        <div className="justify-center items-center flex w-full h-dvh bg-gray-600 font-mono">
+          <div className="w-11/12 h-1/2 flex justify-center items-start flex-wrap">
+            <KeySet />
+            <PlayButton />
+          </div>
         </div>
-      </div>
-    </ChordContext.Provider>
+      </ChordContext.Provider>
+    </PlayChordContext.Provider>
   )
 }
 

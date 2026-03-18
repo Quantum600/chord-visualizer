@@ -1,8 +1,15 @@
+// Components
 import WhiteKey from "./WhiteKey"
 import BlackKey from "./BlackKey";
 
+// Hooks
 import {useContext} from 'react';
+import { useEffect } from "react";
+import { useState } from "react";
+
+// Context
 import { ChordContext } from "./ChordContext";
+import { PlayChordContext } from "./ChordContext";
 
 interface Key {
   note: string;
@@ -61,14 +68,26 @@ function KeySet() {
   })
 
   const [chord] = useContext(ChordContext)
-  const chordNotes: number[] = [];
-  if(chord.root == "C" && chord.quality == "M") {
-    chordNotes.push(36, 36+4, 36+3);
-  }
+  const [playChord] = useContext(PlayChordContext)
+  const [chordNotes, setChordNotes] = useState([0])
 
-  console.log(pianoKeys.find((element) => {
-    return element.key == "57"
-  }))
+  useEffect(() => {
+    if(chord.quality == "M" && chord.root == "C") {
+      setChordNotes([36, 36+4, 36+3])
+    }
+  }, [chord])
+
+  /* eslint-disable */
+
+  useEffect(() => {
+    chordNotes.forEach((note) => {
+      let key = pianoKeys.find((key) => {
+        return key.props.semis == note
+      })
+    })
+  }, [playChord])
+
+  /* eslint-enable */
 
   return (
     <>

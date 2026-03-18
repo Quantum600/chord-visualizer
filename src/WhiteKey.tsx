@@ -8,17 +8,17 @@ interface WhiteKeyProps {
 function WhiteKey(props: WhiteKeyProps) {
   const synth = new Tone.Synth().toDestination(); 
 
-  const OnKeyPressed = () => {
+  const PressKey = () => {
     synth.triggerAttack(props.note);
   }
 
-  const OnKeyReleased = () => {
+  const ReleaseKey = () => {
     synth.triggerRelease();
   }
 
   return (
     <>
-      <div onMouseDown={OnKeyPressed} onMouseUp={OnKeyReleased} onMouseLeave={OnKeyReleased} className="w-14 h-70 outline-4 outline-black flex justify-center text-lg bg-white rounded-lg mx-0.5 z-0 cursor-pointer hover:bg-gray-200 transition-colors">
+      <div onMouseDown={PressKey} onMouseUp={ReleaseKey} onMouseLeave={ReleaseKey} className="w-14 shadow-2xl shadow-black h-70 outline-4 outline-black flex justify-center text-lg bg-radial from-white to-neutral-100 rounded-lg mx-0.5 z-0 cursor-pointer hover:brightness-90 transition-all">
         <div className="self-end select-none">
           {props.note}
         </div>
