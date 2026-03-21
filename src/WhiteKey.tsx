@@ -1,20 +1,30 @@
 import * as Tone from "tone";
+import { useCallback, useEffect } from "react";
 
 interface WhiteKeyProps {
   note: string
   semis: number
+  isActive: boolean
 }
 
 function WhiteKey(props: WhiteKeyProps) {
-  const synth = new Tone.Synth().toDestination(); 
+  const synth = new Tone.Synth().toDestination();
 
-  const PressKey = () => {
+  const PressKey = useCallback(() => {
     synth.triggerAttack(props.note);
-  }
+  }, [])
 
-  const ReleaseKey = () => {
+  const ReleaseKey = useCallback(() => {
     synth.triggerRelease();
-  }
+  }, [])
+
+  useEffect(() => {
+    if (props.isActive) {
+      PressKey();
+    } else {
+      ReleaseKey()
+    }
+  }, [props.isActive])
 
   return (
     <>

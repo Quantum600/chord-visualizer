@@ -58,40 +58,26 @@ const Keys: Key[] = [
 ]
 
 function KeySet() {
-  const pianoKeys = Keys.map(Key => {
-    // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
-    if(Key.note.includes("#")) {
-      return(<BlackKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} />)
-    } else {
-      return(<WhiteKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} />)
-    }
-  })
-
   const [chord] = useContext(ChordContext)
   const [playChord] = useContext(PlayChordContext)
   const [chordNotes, setChordNotes] = useState([0])
 
   useEffect(() => {
     if(chord.quality == "M" && chord.root == "C") {
-      setChordNotes([36, 36+4, 36+3])
+      setChordNotes([36, 36+4, 36+4+3])
     }
   }, [chord])
 
-  /* eslint-disable */
-
-  useEffect(() => {
-    chordNotes.forEach((note) => {
-      let key = pianoKeys.find((key) => {
-        return key.props.semis == note
-      })
-    })
-  }, [playChord])
-
-  /* eslint-enable */
-
   return (
     <>
-      {pianoKeys}
+      {Keys.map(Key => {
+        // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
+        if(Key.note.includes("#")) {
+          return(<BlackKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} isActive={playChord && (chordNotes.includes(Key.semis))} />)
+        } else {
+          return(<WhiteKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} isActive={playChord && (chordNotes.includes(Key.semis))} />)
+        }
+      })}
     </>
   )
 }
