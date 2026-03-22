@@ -77,13 +77,13 @@ function KeySet() {
   if(playChord) {
     synth.releaseAll()
     chordNotes.forEach((note) => {
-      const foundNote = Keys.find((key) => {
-        return key.semis === note;
-      })?.note;
+    const foundNote = Keys.find((key) => {
+      return key.semis === note;
+    })?.note;
 
-      if(foundNote) {
-        synth.triggerAttack(foundNote);
-      }
+    if(foundNote) {
+      synth.triggerAttack(foundNote);
+    }
     })
   } else {
     synth.releaseAll()
