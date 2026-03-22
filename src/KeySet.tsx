@@ -6,10 +6,14 @@ import BlackKey from "./BlackKey";
 import {useContext} from 'react';
 import { useEffect } from "react";
 import { useState } from "react";
+import { useMemo } from "react";
 
 // Context
 import { ChordContext } from "./ChordContext";
 import { PlayChordContext } from "./ChordContext";
+
+// Libraries
+import * as Tone from "tone";
 
 interface Key {
   note: string;
@@ -67,6 +71,23 @@ function KeySet() {
       setChordNotes([36, 36+4, 36+4+3])
     }
   }, [chord])
+
+  const synth = useMemo(() => new Tone.PolySynth().toDestination(), [])
+
+  if(playChord) {
+    synth.releaseAll()
+    chordNotes.forEach((note) => {
+      const foundNote = Keys.find((key) => {
+        return key.semis === note;
+      })?.note;
+
+      if(foundNote) {
+        synth.triggerAttack(foundNote);
+      }
+    })
+  } else {
+    synth.releaseAll()
+  }
 
   return (
     <>
