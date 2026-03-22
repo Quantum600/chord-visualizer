@@ -1,5 +1,7 @@
 import * as Tone from "tone";
 
+import { useMemo } from "react";
+
 interface WhiteKeyProps {
   note: string
   semis: number
@@ -7,7 +9,7 @@ interface WhiteKeyProps {
 }
 
 function WhiteKey(props: WhiteKeyProps) {
-  const synth = new Tone.Synth().toDestination();
+  const synth = useMemo(() => new Tone.Synth().toDestination(), [])
 
   function PressKey() {
     synth.triggerAttack(props.note);

@@ -1,4 +1,5 @@
 import * as Tone from "tone";
+import { useMemo } from "react";
 
 interface BlackKeyProps {
   note: string
@@ -7,7 +8,7 @@ interface BlackKeyProps {
 }
 
 function BlackKey(props: BlackKeyProps) {
-  const synth = new Tone.Synth().toDestination(); 
+  const synth = useMemo(() => new Tone.Synth().toDestination(), [])
 
   const PressKey = () => {
     synth.triggerAttack(props.note);
