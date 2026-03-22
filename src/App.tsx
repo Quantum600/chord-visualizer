@@ -16,7 +16,7 @@ export type ChordType = {
 }
 
 function App() {
-  const [chord, setChord] = useState({root: "C", quality: "Maj"})
+  const [chord, setChord] = useState({root: "C", quality: "maj"})
   const [playChord, setPlayChord] = useState(false)
 
   return (

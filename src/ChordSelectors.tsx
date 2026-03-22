@@ -9,7 +9,7 @@ function ChordSelectors() {
   const [chord, setChord] = useContext(ChordContext)
 
   const roots = useMemo(() => ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"], [])
-  const qualities = useMemo(() => ["Maj", "min", "Aug", "dim"], [])
+  const qualities = useMemo(() => ["maj", "min", "aug", "dim", "sus2", 'sus4'], [])
 
   return (
     <div className="w-full h-10 text-center justify-center flex items-center">

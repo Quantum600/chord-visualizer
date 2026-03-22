@@ -110,7 +110,7 @@ function KeySet() {
 
     // Processing chord quality
     switch (chord.quality) {
-      case "Maj":
+      case "maj":
         tempChordNotes.push(tempChordNotes[0] + 4)
         tempChordNotes.push(tempChordNotes[1] + 3)
         break;
@@ -118,13 +118,21 @@ function KeySet() {
         tempChordNotes.push(tempChordNotes[0] + 3)
         tempChordNotes.push(tempChordNotes[1] + 4)
         break;
-      case "Aug":
+      case "aug":
         tempChordNotes.push(tempChordNotes[0] + 4)
         tempChordNotes.push(tempChordNotes[1] + 4)
         break;
       case "dim":
         tempChordNotes.push(tempChordNotes[0] + 3)
         tempChordNotes.push(tempChordNotes[1] + 3)
+        break;
+      case "sus2":
+        tempChordNotes.push(tempChordNotes[0] + 2)
+        tempChordNotes.push(tempChordNotes[1] + 5)
+        break;
+      case "sus4":
+        tempChordNotes.push(tempChordNotes[0] + 5)
+        tempChordNotes.push(tempChordNotes[1] + 2)
         break;
     }
 
