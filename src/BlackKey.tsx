@@ -20,7 +20,7 @@ function BlackKey(props: BlackKeyProps) {
 
   return (
     <div className="w-0 z-10 flex justify-center overflow-visible">
-      <div onMouseDown={PressKey} onMouseUp={ReleaseKey} onMouseLeave={ReleaseKey} className="shrink-0 shadow-2xl shadow-black w-10 h-42 outline-4 outline-black flex justify-center text-lg bg-radial from-neutral-800 to-black rounded-lg mx-0.5 cursor-pointer hover:brightness-125 transition-colors">
+      <div onMouseDown={PressKey} onMouseUp={ReleaseKey} onMouseLeave={ReleaseKey} className = {`shrink-0 w-10 h-42 outline-4 outline-black flex justify-center text-lg ${props.isActive ? "bg-yellow-300" : "bg-radial from-neutral-800 to-black"} rounded-lg mx-0.5 cursor-pointer hover:brightness-125`}>
         <div className="self-end text-white text-center select-none">
           {props.note}
         </div>

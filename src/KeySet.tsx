@@ -68,7 +68,7 @@ function KeySet() {
 
   useEffect(() => {
     if(chord.quality == "M" && chord.root == "C") {
-      setChordNotes([36, 36+4, 36+4+3])
+      setChordNotes([36, 36+3, 36+3+4])
     }
   }, [chord])
 
