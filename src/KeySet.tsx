@@ -108,9 +108,24 @@ function KeySet() {
         break;
     }
 
-    if (chord.quality === "M") {
-      tempChordNotes.push(tempChordNotes[0] + 4)
-      tempChordNotes.push(tempChordNotes[1] + 3)
+    // Processing chord quality
+    switch (chord.quality) {
+      case "Maj":
+        tempChordNotes.push(tempChordNotes[0] + 4)
+        tempChordNotes.push(tempChordNotes[1] + 3)
+        break;
+      case "min":
+        tempChordNotes.push(tempChordNotes[0] + 3)
+        tempChordNotes.push(tempChordNotes[1] + 4)
+        break;
+      case "Aug":
+        tempChordNotes.push(tempChordNotes[0] + 4)
+        tempChordNotes.push(tempChordNotes[1] + 4)
+        break;
+      case "dim":
+        tempChordNotes.push(tempChordNotes[0] + 3)
+        tempChordNotes.push(tempChordNotes[1] + 3)
+        break;
     }
 
     setChordNotes(tempChordNotes);
