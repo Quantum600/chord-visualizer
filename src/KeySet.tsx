@@ -67,9 +67,53 @@ function KeySet() {
   const [chordNotes, setChordNotes] = useState([0])
 
   useEffect(() => {
-    if(chord.quality == "M" && chord.root == "C") {
-      setChordNotes([36, 36+3, 36+3+4])
+    const tempChordNotes = []
+    // Processing root (switching hell lmao)
+    switch (chord.root) {
+      case "C":
+        tempChordNotes.push(36)
+        break;
+      case "C#/Db":
+        tempChordNotes.push(37)
+        break;
+      case "D":
+        tempChordNotes.push(38)
+        break;
+      case "D#/Eb":
+        tempChordNotes.push(39)
+        break;
+      case "E":
+        tempChordNotes.push(40)
+        break;
+      case "F":
+        tempChordNotes.push(29)
+        break;
+      case "F#/Gb":
+        tempChordNotes.push(30)
+        break;
+      case "G":
+        tempChordNotes.push(31)
+        break;
+      case "G#/Ab":
+        tempChordNotes.push(32)
+        break;
+      case "A":
+        tempChordNotes.push(33)
+        break;
+      case "A#/Bb":
+        tempChordNotes.push(34)
+        break;
+      case "B":
+        tempChordNotes.push(35)
+        break;
     }
+
+    if (chord.quality === "M") {
+      tempChordNotes.push(tempChordNotes[0] + 4)
+      tempChordNotes.push(tempChordNotes[1] + 3)
+    }
+
+    setChordNotes(tempChordNotes);
   }, [chord])
 
   const synth = useMemo(() => new Tone.PolySynth().toDestination(), [])
