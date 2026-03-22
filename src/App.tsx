@@ -11,12 +11,13 @@ import PlayButton from "./PlayButton"
 import ChordSelectors from "./ChordSelectors"
 
 export type ChordType = {
-  root:string,
-  quality:string
+  root: string,
+  quality: string
+  extension: string
 }
 
 function App() {
-  const [chord, setChord] = useState({root: "C", quality: "maj"})
+  const [chord, setChord] = useState({root: "C", quality: "maj", extension: "none"})
   const [playChord, setPlayChord] = useState(false)
 
   return (

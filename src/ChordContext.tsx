@@ -13,7 +13,7 @@ export type PlayChordContextType = [
 ]
 
 export const ChordContext = createContext<ChordContextType>([
-  {root: "C", quality: "Maj"},
+  {root: "C", quality: "Maj", extension: "none"},
   () => {},
 ])
 
