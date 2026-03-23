@@ -136,6 +136,30 @@ function KeySet() {
         break;
     }
 
+    // Processing all extensions
+    switch (chord.extension) {
+      case "none":
+        break;
+      case "7":
+        tempChordNotes.push(tempChordNotes[0] + 10)
+        break;
+      case "maj7":
+        tempChordNotes.push(tempChordNotes[0] + 11)
+        break;
+      case "6/dim7":
+        tempChordNotes.push(tempChordNotes[0] + 9)
+        break;
+      case "b6":
+        tempChordNotes.push(tempChordNotes[0] + 8)
+        break;
+      case "add 9":
+        tempChordNotes.push(tempChordNotes[0] + 14)
+        break;
+      case "add b9":
+        tempChordNotes.push(tempChordNotes[0] + 13)
+        break;
+    }
+
     setChordNotes(tempChordNotes);
   }, [chord])
 
