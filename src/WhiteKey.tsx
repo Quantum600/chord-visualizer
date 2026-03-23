@@ -6,10 +6,12 @@ interface WhiteKeyProps {
   note: string
   semis: number
   isActive: boolean
+  volume: number
 }
 
 function WhiteKey(props: WhiteKeyProps) {
   const synth = useMemo(() => new Tone.Synth().toDestination(), [])
+  synth.volume.value = props.volume
 
   function PressKey() {
     synth.triggerAttack(props.note);

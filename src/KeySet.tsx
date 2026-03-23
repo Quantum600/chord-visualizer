@@ -1,6 +1,7 @@
 // Components
 import WhiteKey from "./WhiteKey"
 import BlackKey from "./BlackKey";
+import VolumeSlider from "./VolumeSlider";
 
 // Hooks
 import {useContext} from 'react';
@@ -65,6 +66,7 @@ function KeySet() {
   const [chord] = useContext(ChordContext)
   const [playChord] = useContext(PlayChordContext)
   const [chordNotes, setChordNotes] = useState([0])
+  const [volume, setVolume] = useState(0)
 
   useEffect(() => {
     const tempChordNotes = []
@@ -164,6 +166,7 @@ function KeySet() {
   }, [chord])
 
   const synth = useMemo(() => new Tone.PolySynth().toDestination(), [])
+  synth.volume.value = volume
 
   if(playChord) {
     synth.releaseAll()
@@ -182,12 +185,13 @@ function KeySet() {
 
   return (
     <>
+      <VolumeSlider volume={volume} setVolume={setVolume} />
       {Keys.map(Key => {
         // If the key is a sharp/flat, map it as a black key, otherwise, its a white key
         if(Key.note.includes("#")) {
-          return(<BlackKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} isActive={playChord && (chordNotes.includes(Key.semis))} />)
+          return(<BlackKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} isActive={playChord && (chordNotes.includes(Key.semis))} volume={volume} />)
         } else {
-          return(<WhiteKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} isActive={playChord && (chordNotes.includes(Key.semis))} />)
+          return(<WhiteKey key={Key.semis.toString()} note={Key.note} semis={Key.semis} isActive={playChord && (chordNotes.includes(Key.semis))} volume={volume} />)
         }
       })}
     </>

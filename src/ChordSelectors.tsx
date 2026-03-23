@@ -12,7 +12,7 @@ function ChordSelectors() {
 
   const roots = useMemo(() => ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"], [])
   const qualities = useMemo(() => ["maj", "min", "aug", "dim", "sus2", 'sus4'], [])
-  const extensionNotesSet = useMemo(() => ["none", "4", "5", "6"], [])
+  const extensionNotesSet = useMemo(() => ["4", "5", "6"], [])
   const fourExtensions = useMemo(() => ["none", "7", "maj7", "6/dim7", "b6", "add 9", "add b9"], [])
 
   return (

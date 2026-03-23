@@ -5,10 +5,12 @@ interface BlackKeyProps {
   note: string
   semis: number
   isActive: boolean
+  volume: number
 }
 
 function BlackKey(props: BlackKeyProps) {
   const synth = useMemo(() => new Tone.Synth().toDestination(), [])
+  synth.volume.value = props.volume
 
   const PressKey = () => {
     synth.triggerAttack(props.note);
